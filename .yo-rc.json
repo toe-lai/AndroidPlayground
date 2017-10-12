@@ -1,0 +1,8 @@
+{
+  "generator-simple-droid-plate": {
+    "promptValues": {
+      "app_name": "AndroidPlayground",
+      "app_package": "com.toelai.androidplayground"
+    }
+  }
+}
