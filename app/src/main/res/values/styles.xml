@@ -9,12 +9,12 @@
         <item name="colorAccent">@color/theme_accent</item>
     </style>
 
-    <style name="AndroidPlayground.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AndroidPlayground.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AndroidPlayground.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AndroidPlayground.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!-- Activity styles -->
-    <style name="AndroidPlayground.Template"/>
+    <style name="AndroidPlayground.Template" />
 
     <!-- Button styles -->
     <style name="Widget.AndroidPlayground.Button.Base" parent="Widget.AppCompat.Button">

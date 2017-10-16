@@ -29,6 +29,9 @@ dependencies {
   implementation "com.android.support:design:$support_version"
   implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
 
+  // Timber
+  compile "com.jakewharton.timber:timber:$timber_version"
+
   // Testing-only dependencies
   testCompile "junit:junit:$junit_version"
 
