@@ -1,23 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.toelai.androidplayground">
+    package="com.toelai.androidplayground">
 
-  <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:supportsRtl="true"
-    android:theme="@style/AndroidPlayground">
-    <activity
-      android:label="@string/app_name"
-      android:name=".template.TemplateActivity"
-      android:theme="@style/AndroidPlayground.Template">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-  </application>
+    <application
+        android:name=".AndroidPlaygroundApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AndroidPlayground">
+        <activity
+            android:name=".template.TemplateActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AndroidPlayground.Template" />
+
+        <!-- Pending Intent Activities -->
+        <activity android:name=".pendingintent.PendingIntentActivity" />
+        <activity android:name=".pendingintent.PICallingActivity" />
+        <activity android:name=".pendingintent.PICalling2Activity" />
+
+        <!-- Notification Activities -->
+        <activity android:name=".notification.NotificationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".notification.NotiHandler1Activity"
+            android:parentActivityName=".notification.NotificationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".notification.NotificationActivity" />
+        </activity>
+        <activity
+            android:name=".notification.NotiHandler2Activity"
+            android:parentActivityName=".notification.NotiHandler1Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".notification.NotiHandler1Activity" />
+        </activity>
+        <activity
+            android:name=".notification.RegularActivity"
+            android:parentActivityName=".notification.NotiHandler2Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".notification.NotiHandler2Activity" />
+        </activity>
+        <activity
+            android:name=".notification.SpecialActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="" />
+
+        <!-- View Pager Activities -->
+        <activity
+            android:name=".viewpager.ViewPagerActivity"
+            android:label="@string/title_activity_view_pager"
+            android:theme="@style/AndroidPlayground"/>
+
+        <!-- Alarm related components -->
+        <service android:name=".alarm.AlarmInitiatorService" android:exported="false"/>
+        <receiver android:name=".alarm.AlarmReceiver"/>
+        <service android:name=".alarm.AlarmHandlerService" />
+
+        <receiver android:name=".alarm.PlaygroundBootReceiver" android:enabled="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".alarm.AlarmReceiver" />
+
+    </application>
 
 </manifest>
